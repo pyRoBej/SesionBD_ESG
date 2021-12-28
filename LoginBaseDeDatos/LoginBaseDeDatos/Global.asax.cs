@@ -28,6 +28,10 @@ namespace LoginBaseDeDatos
             //incrementamos
             Application["Aplicaciones"] = (int)Application["Aplicaciones"] + 1;  //se le aplica casteo al valor que esta dentro de la variable aplicacion
 
+            //Variables de Sesion
+            //Son valores que se  mantienen a través de toda la sesión sin necesidad de pasar ese valor explícitamente entre las páginas.
+            //Session[“usuario”] = UsuarioTextBox.text -> variable de sesión si queremos que el valor de nombre de usuario escrito en la hoja de registro no se pierda en las páginas y además no tenga que pasarse explícitamente a través de ellas.
+            //UsuarioLabel.text = Session[“usuario”] -> Para recuperar el valor de esta variable de sesión en otra página.
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -40,6 +44,17 @@ namespace LoginBaseDeDatos
         {
             Application["SesionesUsuario"] = (int)Application["SesionesUsuario"] + 1;
         }
+
+        //Session.OnStart: Aquí se definen los eventos que se tienen que realizar cuando una sesión se inicia.
+
+        //Session.SessionId: Es el identificador de la sesión.
+
+        //Session.Timeout: Número de minutos que deben de transcurrir sin actividad en la página para que la sesión finalice de forma automática.
+
+        //Session.Abandon: Este método finaliza una sesión inmediatamente.
+
+        //Session.OnEnd: Eventos que se tienen que realizar cuando una sesión se termina.
+
 
         //este handler se ejecuta cuando se finaliza una sesion
         void Session_End(object sender, EventArgs e)
